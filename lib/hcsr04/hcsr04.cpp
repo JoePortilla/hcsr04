@@ -7,8 +7,8 @@
 #include <Arduino.h>
 #include "hcsr04.hpp"
 
-const float soundSpeed = 0.03495;  // Velocidad del sonido [cm/us]
-const uint8_t minDistRange = 2;    // Mínima distancia que puede medir el sensor [cm]
+const float soundSpeed = 0.03432;  // Velocidad del sonido [cm/us]
+const uint8_t minDistRange = 2.3;  // Mínima distancia que puede medir el sensor [cm]
 const uint16_t maxDistRange = 400; // Máxima distancia que puede medir el sensor [cm]
 
 HC_SR04::HC_SR04() {}
@@ -41,11 +41,11 @@ float HC_SR04::getDistance()
     // Lectura del pin Echo. Retorna el tiempo total [us] que le toma a la onda de sonido viajar
     // desde el sensor, rebotar en el objeto y volver hacia el sensor.
     duration = pulseIn(_echoPin, 1, _pulseTimeout);
+    // Se calcula solo la duración del viaje de ida de la onda
+    duration = duration / 2;
     // Si la onda de sonido retornó antes del tiempo de espera máximo definido en _pulseTimeout
     if (duration != 0)
     {
-        // Se calcula solo la duración del viaje de ida de la onda
-        duration = duration / 2;
         // Se obtiene la distancia a partir de la velocidad del sonido aproximada para el lugar.
         distance = duration * soundSpeed;
         // Validación
