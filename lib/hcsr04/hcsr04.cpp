@@ -13,7 +13,7 @@ const uint16_t maxDistRange = 400; // Máxima distancia que puede medir el senso
 
 HC_SR04::HC_SR04() {}
 
-void HC_SR04::setup(int triggerPin, int echoPin, int pulseTimeout)
+void HC_SR04::setup(int triggerPin, int echoPin, unsigned long pulseTimeout)
 {
     // Ajuste de variables
     _triggerPin = triggerPin;

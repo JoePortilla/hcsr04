@@ -12,7 +12,7 @@
 const uint8_t echoPin = 35;    // GPIO al que se conecta el pin ECHO del sensor.
 const uint8_t triggerPin = 32; // GPIO al que se conecta el pin TRIGGER del sensor.
 // Tiempos
-const uint16_t pulseTimeout = 5 * 1000; // µSegundos antes de abortar la recepción
+const uint16_t pulseTimeout = 5000; // µSegundos antes de abortar la recepción
 // ---Variables---
 float distance = 0.0;
 
@@ -28,6 +28,6 @@ void setup()
 void loop()
 {
   distance = ultrasonico.getDistance();
-  Serial.print(String(distance) + " cm");
+  Serial.println(String(distance) + " cm");
   delay(500);
 }

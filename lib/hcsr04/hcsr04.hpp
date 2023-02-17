@@ -23,9 +23,9 @@ public:
      * \brief Función para configurar el sensor.
      * \param triggerPin: GPIO al que se conecta el pin TRIGGER del sensor.
      * \param echoPin: GPIO al que se conecta el pin ECHO del sensor.
-     * \param _pulseTimeout: Tiempo de espera máximo para realizar la medición.
+     * \param pulseTimeout: Tiempo de espera máximo para realizar la medición.
      */
-    void setup(int triggerPin, int echoPin, int _pulseTimeout);
+    void setup(int triggerPin, int echoPin, unsigned long pulseTimeout = 25000);
 
     /**
      * \brief Función para medir la distancia con el sensor.
